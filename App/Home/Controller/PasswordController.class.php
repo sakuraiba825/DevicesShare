@@ -15,8 +15,8 @@ Class PasswordController extends Controller
 
                 $password['account']=$data['number'];
                 $password['password']=$data['passwd'];
-                $good=$goodmodel->where($a)->find();
-        $goodmodel->where($a)->save($password);
+                $password['updatetime'] = time();
+                $goodmodel->where($a)->save($password);
 
                 $options = array(
                     'token' => 'SlJOepU62dlgzXQUOngE2P61HrEWBc5X', //填写你设定的key
@@ -27,12 +27,12 @@ Class PasswordController extends Controller
                 $weObj = new Wechat($options);
 
                 $good = $goodmodel->where($a)->find();
-                $b['openid'] = $good['uid'];
+                $b['openid'] = $good['UserOpenid'];
 
                 $fanmodel=D('fan');
                 $c = $fanmodel->where($b)->find();
 
-                $list['touser'] = $good['uid'];
+                $list['touser'] = $good['useropenid'];
                 $list['template_id'] = "5sYX2CpGSnu2DC3VgAA4AHJmYo6BkyGElui0LpKO6k4";
                 $list['url'] = "http://arashi.natapp1.cc";
                 $list['topcolor'] = "#FF0000";
@@ -58,7 +58,11 @@ Class PasswordController extends Controller
 
                 $d=$weObj->sendTemplateMessage($list);
                 if($d['errcode']==0)
-                {$this->ajaxReturn($d);}else{$this->ajaxReturn($d);}
+                {
+                   // $this->ajaxReturn(1);
+                    $this->ajaxReturn($password);
+
+                }else{$this->ajaxReturn($d);}
     }
 
 }
