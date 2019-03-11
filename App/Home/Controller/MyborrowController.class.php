@@ -9,7 +9,7 @@ Public function index() {
                 $openid=cookie('openid');
                 $goodmodel=D('good');
 
-                $a['uid'] = $openid;
+                $a['useropenid'] = $openid;
                 $gid = $goodmodel->where($a)->field('id')->order('id desc')->select();
                 $num = sizeof($gid);
                 $arr = array();
