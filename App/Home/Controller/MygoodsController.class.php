@@ -10,7 +10,7 @@ Class MygoodsController extends RestController
             case 'get': // get请求处理代码
 
                 $openid =cookie('openid');
-                $a['mid']=$openid;
+                $a['masteropenid']=$openid;
                 $goodmodel=D('good');
 
                 $good =  $goodmodel->where($a)->field('name,detail,img1,state')->select();
