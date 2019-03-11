@@ -35,8 +35,3 @@ class MybookController extends RestController
         }
     }
 }
-
-
-
-
-
