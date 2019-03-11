@@ -26,9 +26,9 @@ Class GoodsaddController extends RestController
                 $list['addtime'] = date('Y-m-d H:i:s');
                 $list['detail'] = $data['content'];
                 $list['model'] = $data['num'];
-                $list['cid']=$data['selectvalue']['value']+1;
-                $list['mid']=$openid;
-                $list['mname']=$relname;
+                $list['classid']=$data['selectvalue']['value']+1;
+                $list['masteropenid']=$openid;
+                $list['masterrealName']=$relname;
                 $list['phone']=$master['mobile'];
               //  $list['address']=$data['address'];
                 //$list['account']=$data['account'];
